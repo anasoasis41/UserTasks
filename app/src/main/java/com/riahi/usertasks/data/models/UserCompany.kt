@@ -1,4 +1,4 @@
-package com.riahi.usertasks.data.model
+package com.riahi.usertasks.data.models
 
 data class UserCompany (
     val name: String,
