@@ -9,8 +9,6 @@ data class Users (
     val id: Int,
     val name: String,
     val email: String,
-    val address: UserAddress,
     val phone: String,
-    val website: String,
-    val company: UserCompany
+    val website: String
 )

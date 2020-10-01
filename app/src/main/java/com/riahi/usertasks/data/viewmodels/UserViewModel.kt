@@ -9,7 +9,7 @@ class UserViewModel(val app: Application) : AndroidViewModel(app) {
     private val userRepository = UsersRepository(app)
     val usersListData = userRepository.userData
 
-    fun usersData() {
+    fun refreshUsersData() {
         userRepository.usersDataFromWeb()
     }
 
