@@ -68,7 +68,7 @@ class UsersRepository(val app: Application) {
         return networkInfo?.isConnectedOrConnecting ?: false
     }
 
-    fun refreshDataFromWeb() {
+    fun usersDataFromWeb() {
         CoroutineScope(Dispatchers.IO).launch {
             callWebService()
         }
