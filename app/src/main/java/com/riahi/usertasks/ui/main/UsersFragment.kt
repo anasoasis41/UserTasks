@@ -22,13 +22,19 @@ class UsersFragment : Fragment() {
     ): View? {
         if (!::binding.isInitialized) {
             binding = FragmentUsersBinding.inflate(inflater, container, false)
-
             viewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
-            viewModel.usersListData.observe(viewLifecycleOwner, Observer {
-                Timber.i("$it")
-            })
+
+            listOfUsers()
         }
         return binding.root
+    }
+
+    private fun listOfUsers() {
+        viewModel.usersListData.observe(viewLifecycleOwner, Observer { usersList ->
+            Timber.i("users $usersList")
+            val adapter = UsersRecyclerAdapter(usersList, requireContext())
+            binding.userAdapter = adapter
+        })
     }
 
 }

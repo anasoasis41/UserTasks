@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.riahi.usertasks.data.dao.UsersDoa
 import com.riahi.usertasks.data.models.Users
 
-@Database(entities = [Users::class], version = 1, exportSchema = false)
+@Database(entities = [Users::class], version = 2, exportSchema = false)
 abstract class UsersDatabase: RoomDatabase() {
 
     abstract fun usersDao(): UsersDoa
