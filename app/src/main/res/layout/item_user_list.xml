@@ -7,16 +7,12 @@
         <variable
             name="model"
             type="com.riahi.usertasks.data.models.Users" />
-
-        <variable
-            name="itemClickListener"
-            type="com.riahi.usertasks.ui.main.UserItemClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> itemClickListener.onUserClicked(model.id)}"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout

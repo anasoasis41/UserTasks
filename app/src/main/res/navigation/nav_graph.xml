@@ -9,5 +9,18 @@
         android:id="@+id/usersFragment"
         android:name="com.riahi.usertasks.ui.main.UsersFragment"
         android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_usersFragment_to_userTasksFragment"
+            app:destination="@id/userTasksFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/userTasksFragment"
+        android:name="com.riahi.usertasks.ui.tasks.UserTasksFragment"
+        android:label="fragment_user_tasks"
+        tools:layout="@layout/fragment_user_tasks" />
 </navigation>
