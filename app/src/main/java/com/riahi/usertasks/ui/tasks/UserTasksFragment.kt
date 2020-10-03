@@ -13,7 +13,6 @@ import androidx.navigation.Navigation
 import com.riahi.usertasks.R
 import com.riahi.usertasks.data.viewmodels.TasksViewModel
 import com.riahi.usertasks.data.viewmodels.TasksViewModelFactory
-import com.riahi.usertasks.data.viewmodels.UserViewModel
 import com.riahi.usertasks.databinding.FragmentUserTasksBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -67,6 +66,8 @@ class UserTasksFragment : Fragment() {
 
         viewModel.tasksListData.observe(viewLifecycleOwner, Observer { tasksList ->
             Timber.i("tasksList ${tasksList}")
+            val adapter = TasksAdapter(requireContext(),tasksList)
+            binding.tasksAdapter = adapter
         })
     }
 }
