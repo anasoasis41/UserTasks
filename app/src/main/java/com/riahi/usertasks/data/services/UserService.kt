@@ -1,6 +1,6 @@
 package com.riahi.usertasks.data.services
 
-import com.riahi.usertasks.data.models.Users
+import com.riahi.usertasks.data.models.users.Users
 import retrofit2.Response
 import retrofit2.http.GET
 

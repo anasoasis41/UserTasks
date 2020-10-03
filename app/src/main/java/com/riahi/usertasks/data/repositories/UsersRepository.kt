@@ -1,15 +1,14 @@
 package com.riahi.usertasks.data.repositories
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
 import android.widget.Toast
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.MutableLiveData
 import com.riahi.usertasks.WEB_SERVICE_URL
 import com.riahi.usertasks.data.UsersDatabase
-import com.riahi.usertasks.data.models.Users
+import com.riahi.usertasks.data.models.users.Users
 import com.riahi.usertasks.data.services.UserService
+import com.riahi.usertasks.networkAvailable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,7 +33,7 @@ class UsersRepository(val app: Application) {
                 userData.postValue(data)
                 // Foreground Thread
                 withContext(Dispatchers.Main) {
-                    Timber.i("Using local data")
+                    Toast.makeText(app, "No internet connection", Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -43,7 +42,7 @@ class UsersRepository(val app: Application) {
 
     @WorkerThread
     suspend fun callWebService() {
-        if (networkAvailable()) {
+        if (networkAvailable(app)) {
             withContext(Dispatchers.Main) {
                 Toast.makeText(app, "Using remote data", Toast.LENGTH_LONG).show()
             }
@@ -59,13 +58,6 @@ class UsersRepository(val app: Application) {
             userDao.deleteAllUsers()
             userDao.insertUsers(serviceData)
         }
-    }
-
-    @Suppress("DEPRECATION")
-    private fun networkAvailable(): Boolean {
-        val connectivityManager = app.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connectivityManager.activeNetworkInfo
-        return networkInfo?.isConnectedOrConnecting ?: false
     }
 
     fun usersDataFromWeb() {

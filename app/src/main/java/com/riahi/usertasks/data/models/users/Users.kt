@@ -1,4 +1,4 @@
-package com.riahi.usertasks.data.models
+package com.riahi.usertasks.data.models.users
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -3,7 +3,7 @@ package com.riahi.usertasks.data.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.riahi.usertasks.data.models.Users
+import com.riahi.usertasks.data.models.users.Users
 
 @Dao
 interface UsersDoa {

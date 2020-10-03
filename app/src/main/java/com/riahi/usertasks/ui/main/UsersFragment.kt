@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -14,6 +15,7 @@ import com.riahi.usertasks.R
 import com.riahi.usertasks.data.viewmodels.UserViewModel
 import com.riahi.usertasks.databinding.FragmentUsersBinding
 import timber.log.Timber
+import kotlin.math.absoluteValue
 
 class UsersFragment : Fragment(), UserItemClickListener {
 
@@ -43,11 +45,8 @@ class UsersFragment : Fragment(), UserItemClickListener {
     }
 
     override fun onUserClicked(id: Int) {
-        if (id > 0) {
-            navController.navigate(R.id.action_usersFragment_to_userTasksFragment)
-        } else {
-            Toast.makeText(context,"User not defined", Toast.LENGTH_SHORT).show()
-        }
+        val bundle = bundleOf("userId" to id)
+        navController.navigate(R.id.action_usersFragment_to_userTasksFragment, bundle)
 
     }
 

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.riahi.usertasks.data.models.Users" />
+            type="com.riahi.usertasks.data.models.users.Users" />
     </data>
 
     <androidx.cardview.widget.CardView

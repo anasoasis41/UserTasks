@@ -1,4 +1,6 @@
-package com.riahi.usertasks.data.models
+package com.riahi.usertasks.data.models.users
+
+import com.riahi.usertasks.data.models.users.GeoLocation
 
 data class UserAddress (
     val street: String,

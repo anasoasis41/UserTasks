@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.riahi.usertasks.R
-import com.riahi.usertasks.data.models.Users
+import com.riahi.usertasks.data.models.users.Users
 import com.riahi.usertasks.databinding.ItemUserListBinding
 
 class UsersRecyclerAdapter(val usersList: List<Users>,
