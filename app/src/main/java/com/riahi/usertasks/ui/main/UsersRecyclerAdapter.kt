@@ -30,7 +30,7 @@ class UsersRecyclerAdapter(val usersList: List<Users>,
         holder.apply {
             bind(userModel)
             itemRowView.cardviewUser.setOnClickListener {
-                itemListener.onUserClicked(userModel.id)
+                itemListener.onUserClicked(userModel.id, userModel.name)
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,8 +42,8 @@ class UsersFragment : Fragment(), UserItemClickListener {
         })
     }
 
-    override fun onUserClicked(id: Int) {
-        val bundle = bundleOf("userId" to id)
+    override fun onUserClicked(id: Int, name: String) {
+        val bundle = bundleOf("userId" to id, "name" to name)
         navController.navigate(R.id.action_usersFragment_to_userTasksFragment, bundle)
 
     }

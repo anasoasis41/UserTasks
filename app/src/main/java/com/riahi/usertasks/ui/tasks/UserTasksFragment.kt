@@ -1,6 +1,5 @@
 package com.riahi.usertasks.ui.tasks
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,6 @@ import com.riahi.usertasks.databinding.FragmentUserTasksBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 
 class UserTasksFragment : Fragment() {
@@ -41,7 +39,12 @@ class UserTasksFragment : Fragment() {
                     userId = it
                 }
             }
-            //val app = Application()
+            arguments?.getString("name").let {
+                if (it != null) {
+                    binding.toolbarTasksName.text = it
+                }
+            }
+
             viewModelFactory = TasksViewModelFactory(requireContext(), userId)
             viewModel = ViewModelProvider(requireActivity(), viewModelFactory).get(TasksViewModel::class.java)
 
@@ -50,8 +53,6 @@ class UserTasksFragment : Fragment() {
                 navController.navigateUp()
             }
 
-
-            Timber.i("userId $userId")
             listOfTasks()
         }
         return binding.root
@@ -65,7 +66,6 @@ class UserTasksFragment : Fragment() {
         }
 
         viewModel.tasksListData.observe(viewLifecycleOwner, Observer { tasksList ->
-            Timber.i("tasksList ${tasksList}")
             val adapter = TasksAdapter(requireContext(),tasksList)
             binding.tasksAdapter = adapter
         })
